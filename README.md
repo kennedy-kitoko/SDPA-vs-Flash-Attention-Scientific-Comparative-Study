@@ -145,6 +145,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
+  https://github.com/kennedy-kitoko/Scientific-README-Why-SDPA-Achieves-Flash-Attention-Performance/tree/main
+  
 - Ultralytics team for YOLO implementation
 - PyTorch team for SDPA implementation
 - Tri Dao and Flash Attention team for their pioneering work
