@@ -135,3 +135,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Ultralytics team for YOLO implementation
 - Prof. Zhang Xiangfu for supervision and guidance
+## lien
+https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.scaled_dot_product_attention.html
+https://docs.ultralytics.com/fr/models/yolo12/
+
