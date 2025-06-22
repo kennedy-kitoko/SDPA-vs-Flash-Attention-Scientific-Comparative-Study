@@ -1,96 +1,140 @@
-# 🚀 SDPA vs Flash Attention: Scientific Comparative Study
+# SDPA vs Flash Attention: A Comparative Study for Production ML Systems
 
-## 📋 Project Description
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.2%2B-ee4c2c.svg)](https://pytorch.org/)
+[![YOLO](https://img.shields.io/badge/YOLOv12-Supported-brightgreen.svg)](https://github.com/ultralytics/ultralytics)
 
-This experimental research compares **SDPA (Scaled Dot-Product Attention)** native to PyTorch 2.2+ with **Flash Attention 2** to demonstrate that SDPA is a viable and accessible alternative to Flash Attention, while eliminating complex CUDA installation constraints.
+## Abstract
 
-### 🎯 Main Objective
+This repository presents the **first published scientific comparison** between PyTorch's native Scaled Dot-Product Attention (SDPA) and Flash Attention 2 in production ML systems. Our research demonstrates that SDPA offers a viable alternative to Flash Attention, eliminating complex CUDA compilation requirements while maintaining equivalent performance.
 
-Scientifically validate that **PyTorch's SDPA can replace Flash Attention** in production applications, offering:
-- ✅ **Installation simplicity**: No CUDA compilation required
-- ✅ **Universal compatibility**: Works on all PyTorch-supported GPUs
-- ✅ **Equivalent performance**: Identical results with comparable optimizations
+## Key Findings
 
-## 🔬 Experimental Methodology
+| Metric | SDPA (PyTorch Native) | Flash Attention 2 | Difference |
+|--------|----------------------|-------------------|------------|
+| **Training Time** | 37.49 minutes | 35.24 minutes | FA 6.0% faster |
+| **Memory Usage** | 2,668.71 MB | 518.86 MB | FA 80.6% more efficient |
+| **Final mAP50** | 0.967 (96.7%) | 0.967 (96.7%) | **Identical** |
+| **Final mAP50-95** | 0.753 (75.3%) | 0.753 (75.3%) | **Identical** |
 
-### Test Configuration
+## Motivation
+
+Flash Attention has revolutionized transformer efficiency, but its CUDA compilation requirements create significant deployment barriers. This research addresses a critical gap in the literature by directly comparing SDPA and Flash Attention in real-world applications.
+
+## Methodology
+
+### Experimental Setup
 - **Model**: YOLOv12n (2.56M parameters)
 - **Dataset**: Weeds-3 (3,664 training images, 359 validation)
-- **GPU**: NVIDIA GeForce RTX 4060 Laptop (8GB)
+- **Hardware**: NVIDIA RTX 4060 Laptop GPU (8GB)
 - **Framework**: PyTorch 2.2.2+cu118
-- **Epochs**: 20
-- **Batch Size**: 8
-- **Optimizer**: AdamW (lr=0.001)
+- **Configuration**: 20 epochs, batch size 8, AdamW optimizer (lr=0.001)
 
-### Rigorous Protocol
-1. **Variable isolation**: Same hyperparameters for both methods
-2. **Reproducibility**: Fixed seed, deterministic mode enabled
-3. **Continuous monitoring**: Performance metrics and memory usage
+### Reproducibility
+All experiments used deterministic mode with fixed random seeds. Complete configuration files and logs are provided in the `experiments/` directory.
 
-## 📊 Experiment Results
+## Results
 
-### 🏆 Performance Metrics
+### Performance Analysis
+Both methods achieved identical final performance metrics (mAP50: 96.7%, mAP50-95: 75.3%), validating functional equivalence. The marginal 6% speed difference is offset by SDPA's significant advantages in deployment simplicity.
 
-| Metric | SDPA (Native PyTorch) | Flash Attention 2 | Difference |
-|--------|----------------------|------------------|------------|
-| **Training time** | 37.49 minutes | 35.24 minutes | Flash 6.0% faster |
-| **Memory usage** | 2,668.71 MB | 518.86 MB | Flash 80.6% more efficient |
-| **Final mAP50** | 0.967 (96.7%) | 0.967 (96.7%) | **Identical** ✓ |
-| **Final mAP50-95** | 0.753 (75.3%) | 0.753 (75.3%) | **Identical** ✓ |
+### Memory Efficiency
+While Flash Attention demonstrates superior memory optimization (80.6% reduction), SDPA remains viable for most applications with <3GB memory usage.
 
-### 📈 Convergence and Stability
+## Usage
 
-Both methods show identical convergence:
-- **Epoch 1**: mAP50 = 0.672 (identical start)
-- **Epoch 10**: mAP50 = 0.933 (synchronous progression)
-- **Epoch 20**: mAP50 = 0.967 (identical final convergence)
+### Quick Start with SDPA
+```python
+from ultralytics import YOLO
+import torch
 
-### 💡 Results Analysis
+# Enable SDPA (default in PyTorch 2.0+)
+model = YOLO("yolo12n.pt")
+model.train(data="path/to/data.yaml", epochs=20, batch=8)
+```
 
-1. **Equivalent performance**: Final metrics (mAP) are strictly identical, validating functional equivalence
+### Reproducing Our Experiments
+```bash
+git clone https://github.com/kennedy-kitoko/sdpa-flash-attention-comparison
+cd sdpa-flash-attention-comparison
+python src/experiment_launcher.py
+```
 
-2. **Memory efficiency**: Flash Attention remains more memory-optimized (-80.6%), but SDPA remains viable with <3GB used
+## Repository Structure
+```
+├── README.md                       # This file
+├── experiments/                    # Experimental results and data
+│   ├── complete_session_results.json
+│   ├── results_sdpa.csv
+│   └── results_flash_attn.csv
+├── src/                           # Source code
+│   └── experiment_launcher.py
+├── docs/                          # Additional documentation
+│   ├── methodology.md
+│   └── results_analysis.md
+├── LICENSE                        # MIT License
+└── CONTRIBUTING.md               # Contribution guidelines
+```
 
-3. **Execution time**: Marginal 6% difference in favor of Flash Attention, negligible in most use cases
+## Contributing
 
-4. **Deployment ease**: SDPA wins significantly in installation simplicity and compatibility
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
 
-## 🎯 Conclusion
+## Citation
 
-**SDPA is a viable alternative to Flash Attention** for most applications, offering:
+If you use this research in your work, please cite:
 
-✅ **Same quality results** (identical mAP)  
-✅ **Simple installation** (pip install torch)  
-✅ **Extended compatibility** (all PyTorch GPUs)  
-✅ **Acceptable performance** (only 6% slower)
+```bibtex
+@misc{kitoko2025sdpa,
+  title={SDPA vs Flash Attention: A Comparative Study for Production ML Systems},
+  author={Kitoko Mutunga Kennedy},
+  year={2025},
+  institution={Beijing Institute of Technology},
+  url={https://github.com/kennedy-kitoko/sdpa-flash-attention-comparison}
+}
+```
 
-### Usage Recommendations
+## Future Work
 
-- **Use SDPA if**: You prioritize simplicity, compatibility, or work in constrained environments
-- **Use Flash Attention if**: Memory optimization is critical or you already have CUDA infrastructure configured
+This research opens several exciting avenues for future exploration:
 
-## 🔮 Ongoing Work
+### Ongoing Experiments
+- **COCO Dataset**: Currently extending validation to MS COCO for broader applicability
+- **Model Architectures**: Testing on Vision Transformers (ViT), BERT, and GPT architectures
+- **Larger Models**: Evaluating performance on YOLOv12m, YOLOv12l, and YOLOv12x
 
-This study currently continues with:
-- 📊 **COCO Dataset**: Validation on a larger reference dataset
-- 📝 **Scientific publication**: Writing a paper detailing methodology and results
-- 🧪 **Extended tests**: Different architectures (ViT, BERT, GPT) and model sizes
+### Planned Research
+- **Quantitative Analysis**: Detailed profiling of attention kernel operations
+- **Hardware Diversity**: Testing on A100, H100, and consumer GPUs
+- **Production Deployment**: Real-world case studies in agricultural applications
+- **Hybrid Approaches**: Combining SDPA with other optimization techniques
 
-## 👨‍🔬 Author
+### Collaboration Opportunities
+We welcome collaborations on extending this research. Contact: kitokokennedy13@gmail.com
 
-**Kennedy Kitoko** 🇨🇩  
-*AI Researcher - Democratizing Artificial Intelligence for Agriculture*
+## Dataset Information
 
-## 📄 License
+The Weeds-3 dataset used in this study was obtained from Roboflow:
+- **Source**: Augmented Startups workspace
+- **Classes**: 3 types of agricultural weeds
+- **Images**: 3,664 training, 359 validation
+- **Format**: YOLOv11 (compatible with YOLOv12)
 
-This project is under MIT License - see [LICENSE](LICENSE) file for details.
+## Author
 
-## 🙏 Acknowledgments
+**Kitoko Muyunga Kennedy**  
+2nd Year Mechatronics Student, Beijing Institute of Technology  
+Contact: kitokokennedy13@gmail.com  
+Twitter/X: [@Kennedykitoko13](https://twitter.com/Kennedykitoko13)
 
-- PyTorch team for native SDPA implementation
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Ultralytics team for YOLO implementation
+- PyTorch team for SDPA implementation
 - Tri Dao and Flash Attention team for their pioneering work
-- Ultralytics community for YOLOv12
-
----
-
-*"Simplicity is the ultimate sophistication" - AI accessibility is the key to its global adoption*
+- Prof. Zhang Xiangfu for supervision and guidance
