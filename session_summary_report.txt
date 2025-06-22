@@ -1,0 +1,18 @@
+🚀 RAPPORT SESSION EXPÉRIMENTALE CORRIGÉE
+==================================================
+Session: 20250621_195702
+Durée: 72.8 minutes
+Date: 2025-06-21 21:09:48
+
+📊 RÉSULTATS EXPÉRIENCES:
+SDPA: ✅ Réussi
+Flash Attention: ✅ Réussi
+Total réussies: 2/2
+
+SDPA - Durée: 37.5 min
+SDPA - Résultats: None
+Flash - Durée: 35.2 min
+Flash - Résultats: None
+
+📁 Dossier session: experiments_session_20250621_195702
+🇨🇩 Kennedy Kitoko - Agricultural AI Innovation

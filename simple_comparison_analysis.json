@@ -1,0 +1,22 @@
+{
+    "timestamp": "2025-06-21T21:09:48.510388",
+    "experiments_compared": 2,
+    "sdpa_available": true,
+    "flash_available": true,
+    "comparison_possible": true,
+    "sdpa_metrics": {
+        "duration_minutes": 37.49440743923187,
+        "memory_used_mb": 2668.71484375,
+        "results_path": null
+    },
+    "flash_metrics": {
+        "duration_minutes": 35.241282459100084,
+        "memory_used_mb": 518.86328125,
+        "results_path": null
+    },
+    "performance_comparison": {
+        "sdpa_faster": false,
+        "time_difference_minutes": 2.253124980131787,
+        "speed_advantage": "Flash Attention"
+    }
+}
