@@ -138,4 +138,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## lien
 https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.scaled_dot_product_attention.html
 https://docs.ultralytics.com/fr/models/yolo12/
+YOLOv12 paper : https://arxiv.org/abs/2502.12524 
+Flash Attention benchmark : https://rocm.blogs.amd.com/artificial-intelligence/flash-attention/README.html 
+PyTorch SDPA tutorial : https://docs.pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html 
 
