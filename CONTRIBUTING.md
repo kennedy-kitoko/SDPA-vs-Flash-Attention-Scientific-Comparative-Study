@@ -48,16 +48,8 @@ Please report unacceptable behavior to kitokokennedy13@gmail.com
 git clone https://github.com/kennedy-kitoko/sdpa-flash-attention-comparison
 cd sdpa-flash-attention-comparison
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Create virtual environment conda
 
-# Install dependencies
-pip install -r requirements.txt
-
-# Run tests
-python -m pytest tests/
-```
 
 ## Questions?
 
