@@ -46,12 +46,23 @@ While Flash Attention demonstrates superior memory optimization (80.6% reduction
 
 ### Quick Start with SDPA
 ```python
-from ultralytics import YOLO
-import torch
 
-# Enable SDPA (default in PyTorch 2.0+)
-model = YOLO("yolo12n.pt")
-model.train(data="path/to/data.yaml", epochs=20, batch=8)
+import torch.nn.functional as F
+
+def setup_sdpa_environment():
+    """Optimized PyTorch SDPA configuration"""
+    torch.backends.cudnn.benchmark = True
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
+    os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
+    
+    if hasattr(F, 'scaled_dot_product_attention'):
+        return True
+    return False
+
+def sdpa_attention(q, k, v, mask=None):
+    """SDPA attention mechanism"""
+    return F.scaled_dot_product_attention(q, k, v, attn_mask=mask)
 ```
 
 ### Reproducing Our Experiments
