@@ -134,6 +134,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - Ultralytics team for YOLO implementation
-- PyTorch team for SDPA implementation
-- Tri Dao and Flash Attention team for their pioneering work
 - Prof. Zhang Xiangfu for supervision and guidance
