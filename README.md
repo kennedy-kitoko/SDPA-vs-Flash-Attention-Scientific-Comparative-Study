@@ -88,7 +88,7 @@ If you use this research in your work, please cite:
 ```bibtex
 @misc{kitoko2025sdpa,
   title={SDPA vs Flash Attention: A Comparative Study for Production ML Systems},
-  author={Kitoko Mutunga Kennedy},
+  author={Kitoko Muyunga Kennedy},
   year={2025},
   institution={Beijing Institute of Technology},
   url={https://github.com/kennedy-kitoko/sdpa-flash-attention-comparison}
@@ -101,7 +101,6 @@ This research opens several exciting avenues for future exploration:
 
 ### Ongoing Experiments
 - **COCO Dataset**: Currently extending validation to MS COCO for broader applicability
-- **Model Architectures**: Testing on Vision Transformers (ViT), BERT, and GPT architectures
 - **Larger Models**: Evaluating performance on YOLOv12m, YOLOv12l, and YOLOv12x
 
 ### Planned Research
