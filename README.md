@@ -69,7 +69,7 @@ def sdpa_attention(q, k, v, mask=None):
 ```bash
 git clone https://github.com/kennedy-kitoko/sdpa-flash-attention-comparison
 cd sdpa-flash-attention-comparison
-python src/experiment_launcher.py
+python experiment_launcher.py
 ```
 
 ## Repository Structure
