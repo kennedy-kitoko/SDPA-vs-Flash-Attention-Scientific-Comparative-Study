@@ -1,4 +1,4 @@
-# PYTORCH SDPA vs Flash Attention: A Comparative Study for Production ML Systems
+# SDPA vs Flash Attention: A Comparative Study for Production ML Systems
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
@@ -88,7 +88,7 @@ If you use this research in your work, please cite:
 ```bibtex
 @misc{kitoko2025sdpa,
   title={SDPA vs Flash Attention: A Comparative Study for Production ML Systems},
-  author={Kitoko Muyunga Kennedy},
+  author={Kitoko Mutunga Kennedy},
   year={2025},
   institution={Beijing Institute of Technology},
   url={https://github.com/kennedy-kitoko/sdpa-flash-attention-comparison}
@@ -101,6 +101,7 @@ This research opens several exciting avenues for future exploration:
 
 ### Ongoing Experiments
 - **COCO Dataset**: Currently extending validation to MS COCO for broader applicability
+- **Model Architectures**: Testing on Vision Transformers (ViT), BERT, and GPT architectures
 - **Larger Models**: Evaluating performance on YOLOv12m, YOLOv12l, and YOLOv12x
 
 ### Planned Research
@@ -134,11 +135,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - Ultralytics team for YOLO implementation
+- PyTorch team for SDPA implementation
+- Tri Dao and Flash Attention team for their pioneering work
 - Prof. Zhang Xiangfu for supervision and guidance
-## lien
-https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.scaled_dot_product_attention.html
-https://docs.ultralytics.com/fr/models/yolo12/
-YOLOv12 paper : https://arxiv.org/abs/2502.12524 
-Flash Attention benchmark : https://rocm.blogs.amd.com/artificial-intelligence/flash-attention/README.html 
-PyTorch SDPA tutorial : https://docs.pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html 
-
