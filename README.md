@@ -64,13 +64,13 @@ python src/experiment_launcher.py
 ## Repository Structure
 ```
 ├── README.md                       # This file
-├── experiments/                    # Experimental results and data
+├──                     # Experimental results and data
 │   ├── complete_session_results.json
 │   ├── results_sdpa.csv
 │   └── results_flash_attn.csv
-├── src/                           # Source code
+├──                            # Source code
 │   └── experiment_launcher.py
-├── docs/                          # Additional documentation
+├──                           # Additional documentation
 │   ├── methodology.md
 │   └── results_analysis.md
 ├── LICENSE                        # MIT License
