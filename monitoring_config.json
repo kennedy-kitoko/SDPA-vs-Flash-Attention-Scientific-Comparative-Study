@@ -1,0 +1,18 @@
+{
+    "monitoring_interval_seconds": 1.0,
+    "snapshot_interval_seconds": 10.0,
+    "resource_tracking": {
+        "cpu_usage": true,
+        "ram_usage": true,
+        "gpu_memory": true,
+        "gpu_utilization": true,
+        "temperature": true,
+        "disk_io": true,
+        "network_io": true
+    },
+    "data_retention": {
+        "raw_data_days": 30,
+        "processed_data_days": 90,
+        "reports_days": 365
+    }
+}
