@@ -10,14 +10,14 @@
         "OMP_NUM_THREADS": "6"
     },
     "training_config": {
-        "epochs": 100,
+        "epochs": 20,
         "batch": 8,
         "imgsz": 640,
         "device": "cuda:0",
         "workers": 6,
         "optimizer": "AdamW",
         "lr0": 0.001,
-        "amp": true,
+        "amp": false,
         "cache": false,
         "patience": 30,
         "save_period": 5
